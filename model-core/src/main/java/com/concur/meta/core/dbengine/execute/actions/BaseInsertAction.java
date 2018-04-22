@@ -46,11 +46,11 @@ public class BaseInsertAction extends ActionTemplate implements WriteAction {
         Map<String, Serializable> paramMap = metaDatasource.getParameterBuilder().forModelInsert(tableMeta, request);
         ColumnMeta primaryKey = tableMeta.getPrimaryKey();
 
-        int count = sqlMapper.insert(sql, paramMap, primaryKey.getColumnName());
+        int count = sqlMapper.insert(sql, paramMap, primaryKey.getPropertyName());
         sqlMapper.commit();
         if (count > 0) {
             // 获取主键
-            Serializable primaryValue = paramMap.get(primaryKey.getColumnName());
+            Serializable primaryValue = paramMap.get(primaryKey.getPropertyName());
             paramMap.put(primaryKey.getPropertyName(), primaryValue);
             return paramMap;
         }

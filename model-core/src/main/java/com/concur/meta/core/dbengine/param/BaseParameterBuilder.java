@@ -58,7 +58,7 @@ public class BaseParameterBuilder implements ParameterBuilder {
         if (request.getObject() == null) {
             return params;
         }
-        String primaryKey = tableMeta.getPrimaryKey().getColumnName();
+        String primaryKey = tableMeta.getPrimaryKey().getPropertyName();
         Serializable pkValue = request.getParam(primaryKey);
         if (pkValue == null) {
             pkValue = request.getParam(ParamKeys.DO_PRIMARY_KEY);
@@ -79,7 +79,7 @@ public class BaseParameterBuilder implements ParameterBuilder {
             return params;
         }
         Serializable pkValue = request.getParam(ParamKeys.DO_PRIMARY_KEY);
-        params.put(tableMeta.getPrimaryKey().getColumnName(), pkValue);
+        params.put(tableMeta.getPrimaryKey().getPropertyName(), pkValue);
         return params;
     }
 
