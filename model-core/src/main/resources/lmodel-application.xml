@@ -14,7 +14,7 @@
 	<context:annotation-config/>
 	<aop:aspectj-autoproxy />
 	
-	<context:component-scan base-package="com.taobao.lmodel"/>
+	<context:component-scan base-package="com.concur.meta"/>
 
     <import resource="classpath:lmodel.datasource.xml" />
 
