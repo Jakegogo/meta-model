@@ -9,7 +9,6 @@ import com.concur.meta.client.api.persist.actions.InsertAction;
 import com.concur.meta.client.api.persist.actions.UpdateAction;
 import com.concur.meta.client.api.transaction.Transaction;
 import com.concur.meta.client.dataobject.MetaResponse;
-import com.concur.meta.client.service.ServiceFactory;
 import com.concur.meta.client.api.persist.actions.operation.AbstractOperation;
 import org.apache.commons.collections.CollectionUtils;
 
@@ -30,10 +29,6 @@ public class Persist<T extends Serializable> {
      */
     private Long dataSourceId;
 
-    static {
-        ServiceFactory.getInstance()
-            .getMetaDataWriteServerService();
-    }
 
     public static <T extends Serializable> Persist<T> create() {
         Persist<T> persist = new Persist<T>();

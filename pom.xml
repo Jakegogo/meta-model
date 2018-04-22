@@ -86,12 +86,6 @@
                 <version>1.7.5</version>
             </dependency>
             <!--log about end -->
-            <!-- servlet -->
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>2.4</version>
-            </dependency>
             <!--spring start-->
             <dependency>
                 <groupId>org.springframework</groupId>

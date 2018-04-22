@@ -25,7 +25,7 @@ public class ServiceUtil {
     static LModelService lModelService;
 
     static {
-        lmodelConfigDataSource = (DataSource) ApplicationContextUtils.getContext().getBean("lmodelConfigDataSource");
+        lmodelConfigDataSource = (DataSource) ApplicationContextUtils.getContext().getBean("dataSource");
         lModelService = (LModelService) ApplicationContextUtils.getContext().getBean("lModelService");
     }
 

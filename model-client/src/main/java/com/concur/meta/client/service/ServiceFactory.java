@@ -6,6 +6,9 @@ import com.concur.meta.client.service.server.MetaDataWriteServerService;
 import com.concur.meta.client.api.persist.actions.operation.AbstractOperation;
 import com.concur.meta.client.service.impl.TairDataServiceImpl;
 
+import javax.annotation.PostConstruct;
+
+
 /**
  * 服务工厂
  * 如果需要独立的server, 请建立WebServer工程,
@@ -50,7 +53,7 @@ public class ServiceFactory {
     private TairDataService tairDataService = new TairDataServiceImpl();
 
     private ServiceFactory(){
-        initServices();
+
     }
 
     /**
@@ -58,13 +61,23 @@ public class ServiceFactory {
      * @return
      */
     public static ServiceFactory getInstance() {
+        if (instance == null) {
+            synchronized (ServiceFactory.class) {
+                if (instance == null) {
+                    instance = new ServiceFactory();
+                    instance.initServices();
+                }
+            }
+        }
         return instance;
     }
 
     /**
      * 初始化HSF订阅服务
      */
+    @PostConstruct
     public void initServices() {
+        instance = this;
         /**
          * 元数据驱动引擎之 数据服务
          * 如果需要独立的server, 请建立WebServer工程,

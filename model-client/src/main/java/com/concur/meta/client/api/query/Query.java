@@ -23,10 +23,6 @@ public class Query<T extends Serializable> extends AbstractQuery<T> {
 
     private static final long serialVersionUID = 1174987136593994725L;
 
-    static {
-        ServiceFactory.getInstance().getMetaDataReadServerService();
-    }
-
     Query() {
     }
 
