@@ -21,4 +21,10 @@ public class Boolean2IntegerConverter extends ConverterAdapter<Boolean, Integer>
         }
         return Integer.valueOf(0);
     }
+
+    @Override
+    protected void postRegister() {
+        converterService.registerConverter(boolean.class, Integer.class, this);
+        converterService.registerConverter(boolean.class, int.class, this);
+    }
 }
