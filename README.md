@@ -13,7 +13,7 @@
 
 2. 配置server端RPC服务, 可使用HSF或dubbo等分布式框架
 ```java
-<!-- 元数据读服务HSF -->
+    <!-- 元数据读服务HSF -->
     <bean class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean"
           init-method="init">
         <property name="serviceInterface"
@@ -59,22 +59,22 @@
 1. 引入maven依赖:
 ```java
 <dependency>
-                <groupId>com.concur.meta</groupId>
-                <artifactId>model-core</artifactId>
-                <version>${meta-model.version}</version>
+    <groupId>com.concur.meta</groupId>
+    <artifactId>model-core</artifactId>
+    <version>${meta-model.version}</version>
 </dependency>
 ```
 2. 配置数据源, bean ID为dataSource
 ```java
 <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="${spring.datasource.driverClassName}" />
-		<property name="url" value="${spring.datasource.url}" />
-		<property name="username" value="${spring.datasource.username}" />
-		<property name="password" value="${spring.datasource.password}" />
-		<property name="validationQuery" value="${spring.datasource.validation-query}" />
-		<property name="maxTotal" value="${spring.datasource.max-active}" />
-		<property name="testOnBorrow" value="${spring.datasource.test-on-borrow}" />
-	</bean>
+	<property name="driverClassName" value="${spring.datasource.driverClassName}" />
+	<property name="url" value="${spring.datasource.url}" />
+	<property name="username" value="${spring.datasource.username}" />
+	<property name="password" value="${spring.datasource.password}" />
+	<property name="validationQuery" value="${spring.datasource.validation-query}" />
+	<property name="maxTotal" value="${spring.datasource.max-active}" />
+	<property name="testOnBorrow" value="${spring.datasource.test-on-borrow}" />
+</bean>
 ```
 
 
