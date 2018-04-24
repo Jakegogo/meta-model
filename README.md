@@ -24,19 +24,19 @@
 </bean>
 ```
 
-3. 配置server端RPC服务, 可使用HSF或dubbo等分布式框架
+3. 配置server端RPC服务, 可使用dubbo等分布式框架
 ```java
-    <!-- 元数据读服务HSF -->
+    <!-- 元数据读服务-->
     ......
     com.concur.meta.client.service.server.MetaDataReadServerService
     ......
 
-    <!-- 元数据写服务HSF -->
+    <!-- 元数据写服务-->
     ......
     com.concur.meta.client.service.server.MetaDataWriteServerService
     ......
 
-    <!-- 元数据数据源服务HSF -->
+    <!-- 元数据数据源服务-->
     ......
     com.concur.meta.client.service.DataSourceService
     ......
