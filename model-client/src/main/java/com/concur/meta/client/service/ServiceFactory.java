@@ -36,12 +36,6 @@ public class ServiceFactory {
      */
     protected DataSourceService dataSourceService;
 
-//    /**
-//     * Hsf lightapi服务工厂
-//     */
-//    public final com.taobao.hsf.lightapi.ServiceFactory FACTORY = com.taobao.hsf.lightapi.ServiceFactory.getInstance();
-
-
     /**
      * 元数据读服务
      */
@@ -83,33 +77,6 @@ public class ServiceFactory {
          * 如果需要独立的server, 请建立WebServer工程,
          * 并且配置RPC调用:MetaDataReadServerService,MetaDataWriteServerService,DataSourceService
          */
-//        FACTORY.consumer("metaDataWriteServerService")
-//            .service("MetaDataWriteServerService")
-//            .version("1.0.0")
-//            .subscribe();
-//        FACTORY.consumer("metaDataReadServerService")
-//            .service("MetaDataReadServerService")
-//            .version("1.0.0")
-//            .subscribe();
-//        FACTORY.consumer("dataSourceService")
-//            .service("DataSourceService")
-//            .version("1.0.0")
-//            .subscribe();
-//
-//        // 睡眠5秒
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // 依赖注入
-//        setMetaDataWriteServerService((MetaDataWriteServerService)
-//            FACTORY.consumer("metaDataWriteServerService").subscribe());
-//        setMetaDataReadServerService((MetaDataReadServerService)
-//            FACTORY.consumer("metaDataReadServerService").subscribe());
-//        setDataSourceService((DataSourceService)
-//            FACTORY.consumer("dataSourceService").subscribe());
     }
 
 

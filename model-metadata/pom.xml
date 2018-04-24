@@ -79,5 +79,4 @@
       </activation> 
     </profile> 
   </profiles>  
-  <contributors><contributor><properties><provider>yongfu.cyf@alibaba-inc.com</provider><codeName>null</codeName><codeUrl>http://gitlab.alibaba-inc.com/lbf/lmodel.git commit:c6b19da</codeUrl><description>contributors added by SCM Plugin, please don't modify it!</description></properties></contributor></contributors>
 </project>

@@ -1,7 +1,3 @@
-/*
- * Taobao.com Inc.
- * Copyright (c) 2012 All Rights Reserved.
- */
 package com.concur.meta.client.utils;
 
 import java.util.ArrayList;
