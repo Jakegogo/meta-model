@@ -6,8 +6,8 @@
 1. 建立WebServer工程, 引入包
 ```java
 <dependency>
-            <groupId>com.concur.meta</groupId>
-            <artifactId>model-core</artifactId>
+    <groupId>com.concur.meta</groupId>
+    <artifactId>model-core</artifactId>
 </dependency>
 ```
 
@@ -27,34 +27,19 @@
 3. 配置server端RPC服务, 可使用HSF或dubbo等分布式框架
 ```java
     <!-- 元数据读服务HSF -->
-    <bean class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean"
-          init-method="init">
-        <property name="serviceInterface"
-                  value="com.taobao.lmodel.client.service.server.MetaDataReadServerService"/>
-        <property name="serviceVersion" value="${lmodel.hsf.provider.version}"/>
-        <property name="target" ref="metaDataReadServerService"/>
-        <property name="clientTimeout" value="5000"/>
-    </bean>
+    ......
+    com.concur.meta.client.service.server.MetaDataReadServerService
+    ......
 
     <!-- 元数据写服务HSF -->
-    <bean class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean"
-          init-method="init">
-        <property name="serviceInterface"
-                  value="com.taobao.lmodel.client.service.server.MetaDataWriteServerService"/>
-        <property name="serviceVersion" value="${lmodel.hsf.provider.version}"/>
-        <property name="target" ref="metaDataWriteServerService"/>
-        <property name="clientTimeout" value="15000"/>
-    </bean>
+    ......
+    com.concur.meta.client.service.server.MetaDataWriteServerService
+    ......
 
     <!-- 元数据数据源服务HSF -->
-    <bean class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean"
-          init-method="init">
-        <property name="serviceInterface"
-                  value="com.taobao.lmodel.client.service.DataSourceService"/>
-        <property name="serviceVersion" value="${lmodel.hsf.provider.version}"/>
-        <property name="target" ref="metaDataSourceService"/>
-        <property name="clientTimeout" value="5000"/>
-    </bean>
+    ......
+    com.concur.meta.client.service.DataSourceService
+    ......
 ```
 
 4. 配置client端的rpc服务
