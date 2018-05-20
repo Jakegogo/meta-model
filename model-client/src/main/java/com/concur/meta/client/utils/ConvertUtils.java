@@ -27,6 +27,7 @@ import com.concur.meta.client.conversion.SimpleConverterService;
 import com.concur.meta.client.domain.BaseModel;
 import com.concur.meta.client.exception.ExecuteException;
 import com.concur.meta.client.result.ClientResultCode;
+import org.apache.commons.beanutils.converters.DateConverter;
 
 /**
  * 数据转换工具类
@@ -47,6 +48,9 @@ public class ConvertUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        // apache转换注册Date支持
+        org.apache.commons.beanutils.ConvertUtils
+                .register(new DateConverter(null), java.util.Date.class);
     }
 
     /**
