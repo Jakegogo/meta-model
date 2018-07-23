@@ -23,6 +23,7 @@ public class ExtraUtil {
 
     static final String R_SP = "#3A";
     static final String R_SSP = "#3B";
+    static final String R_COMMA = "#3C";
 
     /**
      * 通过Map转换成String
@@ -106,11 +107,11 @@ public class ExtraUtil {
         return str;
     }
     public static String encode(String val) {
-        return replace(replace(val, SP, R_SP), SSP, R_SSP);
+        return replace(replace(replace(val, SP, R_SP), SSP, R_SSP), COMMA, R_COMMA);
     }
 
     public static String decode(String val) {
-        return replace(replace(val, R_SP, SP), R_SSP, SSP);
+        return replace(replace(replace(val, R_SP, SP), R_SSP, SSP), R_COMMA, COMMA);
     }
 
     public static boolean isNotEmpty(String str) {
