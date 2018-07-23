@@ -11,7 +11,7 @@ import com.concur.meta.metadata.domain.MetaModelDO;
  * @author yongfu.cyf
  * @create 2017-07-03 下午7:39
  **/
-public interface LModelService {
+public interface LMetaService {
 
     /**
      * 获取LModelDO列表

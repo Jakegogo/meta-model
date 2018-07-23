@@ -2,7 +2,7 @@ package com.concur.meta.metadata.util;
 
 import javax.sql.DataSource;
 
-import com.concur.meta.metadata.service.LModelService;
+import com.concur.meta.metadata.service.LMetaService;
 
 /**
  * 服务工厂工具类
@@ -20,21 +20,21 @@ public class ServiceUtil {
      */
     static DataSource lmodelConfigDataSource;
     /**
-     * LModelService
+     * LMetaService
      */
-    static LModelService lModelService;
+    static LMetaService lMetaService;
 
     static {
         lmodelConfigDataSource = (DataSource) ApplicationContextUtils.getContext().getBean("dataSource");
-        lModelService = (LModelService) ApplicationContextUtils.getContext().getBean("lModelService");
+        lMetaService = (LMetaService) ApplicationContextUtils.getContext().getBean("lMetaService");
     }
 
     public static DataSource getLmodelConfigDataSource() {
         return lmodelConfigDataSource;
     }
 
-    public static LModelService getlModelService() {
-        return lModelService;
+    public static LMetaService getlMetaService() {
+        return lMetaService;
     }
 
 }

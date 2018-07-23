@@ -59,7 +59,7 @@ public abstract class BaseMetaDatasource implements MetaDatasource {
             new CacheUtils.AsynchronousCacheLoader<String, Boolean>() {
                 @Override
                 public Boolean load(String key) {
-                    List<MetaModelColDO> cols = ServiceUtil.getlModelService().listColByClass(key);
+                    List<MetaModelColDO> cols = ServiceUtil.getlMetaService().listColByClass(key);
                     if (CollectionUtils.isEmpty(cols)) {
                         return true;
                     }

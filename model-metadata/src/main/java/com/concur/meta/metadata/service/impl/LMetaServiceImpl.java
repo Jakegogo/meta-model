@@ -7,7 +7,7 @@ import com.concur.meta.client.api.persist.Persist;
 import com.concur.meta.client.api.query.Query;
 import com.concur.meta.metadata.domain.MetaModelColDO;
 import com.concur.meta.metadata.domain.MetaModelDO;
-import com.concur.meta.metadata.service.LModelService;
+import com.concur.meta.metadata.service.LMetaService;
 
 /**
  * LModel元数据模型服务接口实现
@@ -15,7 +15,7 @@ import com.concur.meta.metadata.service.LModelService;
  * @author yongfu.cyf
  * @create 2017-07-03 下午7:43
  **/
-public class LModelServiceImpl implements LModelService {
+public class LMetaServiceImpl implements LMetaService {
 
     private static final String CLASS_NAME = "className";
 
