@@ -32,7 +32,7 @@
     <bean id="dataSourceManager" class="com.concur.meta.core.manager.impl.DataSourceManagerImpl"/>
 
 
-    <bean id="lModelService" class="com.concur.meta.metadata.service.impl.LMetaServiceImpl"/>
+    <bean id="lMetaService" class="com.concur.meta.metadata.service.impl.LMetaServiceImpl"/>
 
     <bean id="serviceFactory" class="com.concur.meta.client.service.ServiceFactory">
         <property name="metaDataReadServerService" ref="metaDataReadServerService"/>
