@@ -51,7 +51,7 @@ public abstract class BaseMetaDatasource implements MetaDatasource {
      * 模型配置异步缓存
      * 查询DB操作在事务之外
      */
-    protected static final LoadingCache<String, Boolean> LMODEL_COL_SETTING = CacheBuilder.newBuilder()
+    protected final LoadingCache<String, Boolean> LMODEL_COL_SETTING = CacheBuilder.newBuilder()
         .concurrencyLevel(4)
         .maximumSize(1000)
         .refreshAfterWrite(5, TimeUnit.MINUTES)

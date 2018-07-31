@@ -37,7 +37,7 @@ public abstract class AbstractOperation implements Serializable {
     /**
      * 数据源缓存
      */
-    protected final static LoadingCache<Long, DataSourceDTO> DATASOUR_CECACHE = CacheBuilder.newBuilder()
+    protected final LoadingCache<Long, DataSourceDTO> DATASOUR_CECACHE = CacheBuilder.newBuilder()
         .concurrencyLevel(4)
         .maximumSize(1000)
         .refreshAfterWrite(5, TimeUnit.MINUTES)
