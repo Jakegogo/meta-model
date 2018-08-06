@@ -1,4 +1,5 @@
-# 元数据驱动引擎之 数据服务;
+# 
+数据驱动引擎之 数据服务;
 ## 接入说明
 ### 1.服务化模式
 如果需要独立的服务化server
@@ -26,19 +27,19 @@
 
 3. 配置server端RPC服务, 可使用dubbo等分布式框架
 ```java
-    <!-- 元数据读服务-->
+    <!-- 数据读服务-->
     ......
     <bean id="metaDataReadServerService" class="com.concur.meta.core.service.impl.MetaDataReadServerServiceImpl"/>
     <dubbo:service timeout="3000" interface="com.concur.meta.client.service.server.MetaDataReadServerService" ref="metaDataReadServerService"/>
     ......
 
-    <!-- 元数据写服务-->
+    <!-- 数据写服务-->
     ......
     <bean id="metaDataWriteServerService" class="com.concur.meta.core.service.impl.MetaDataWriteServerServiceImpl"/>
     <dubbo:service timeout="3000" interface="com.concur.meta.client.service.server.MetaDataWriteServerService" ref="metaDataWriteServerService"/>
     ......
 
-    <!-- 元数据数据源服务-->
+    <!-- 数据源服务-->
     ......
     <bean id="metaDataSourceService" class="com.concur.meta.metadata.service.impl.DataSourceServiceImpl"/>
     <dubbo:service timeout="3000" interface="com.concur.meta.client.service.DataSourceService" ref="dataSourceService"/>
@@ -82,15 +83,15 @@
         <property name="metaDataWriteServerService" ref="metaDataWriteServerService"/>
         <property name="dataSourceService" ref="metaDataSourceService"/>
     </bean>
-     <!-- 元数据读服务-->
+     <!-- 数据读服务-->
     <bean id="metaDataReadServerService" class="com.concur.meta.core.service.impl.MetaDataReadServerServiceImpl"/>
     <dubbo:service timeout="3000" interface="com.concur.meta.client.service.server.MetaDataReadServerService" ref="metaDataReadServerService"/>
 
-    <!-- 元数据写服务-->
+    <!-- 数据写服务-->
     <bean id="metaDataWriteServerService" class="com.concur.meta.core.service.impl.MetaDataWriteServerServiceImpl"/>
     <dubbo:service timeout="3000" interface="com.concur.meta.client.service.server.MetaDataWriteServerService" ref="metaDataWriteServerService"/>
 
-    <!-- 元数据数据源服务-->
+    <!-- 数据源服务-->
     <bean id="metaDataSourceService" class="com.concur.meta.metadata.service.impl.DataSourceServiceImpl"/>
     <dubbo:service timeout="3000" interface="com.concur.meta.client.service.DataSourceService" ref="dataSourceService"/>
 ```
