@@ -65,6 +65,11 @@
 
 2. 配置数据源(同上)
 
+3. 引入lmodel的spring配置
+```
+<import resource="classpath:lmodel-application.xml"/>
+```
+
 ## 使用接口
 
 1.添加模型注解
