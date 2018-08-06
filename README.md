@@ -28,27 +28,71 @@
 ```java
     <!-- 元数据读服务-->
     ......
-    com.concur.meta.client.service.server.MetaDataReadServerService
+    <bean id="metaDataReadServerService" class="com.concur.meta.core.service.impl.MetaDataReadServerServiceImpl"/>
+    <dubbo:service timeout="3000" interface="com.concur.meta.client.service.server.MetaDataReadServerService" ref="metaDataReadServerService"/>
     ......
 
     <!-- 元数据写服务-->
     ......
-    com.concur.meta.client.service.server.MetaDataWriteServerService
+    <bean id="metaDataWriteServerService" class="com.concur.meta.core.service.impl.MetaDataWriteServerServiceImpl"/>
+    <dubbo:service timeout="3000" interface="com.concur.meta.client.service.server.MetaDataWriteServerService" ref="metaDataWriteServerService"/>
     ......
 
     <!-- 元数据数据源服务-->
     ......
-    com.concur.meta.client.service.DataSourceService
+    <bean id="metaDataSourceService" class="com.concur.meta.metadata.service.impl.DataSourceServiceImpl"/>
+    <dubbo:service timeout="3000" interface="com.concur.meta.client.service.DataSourceService" ref="dataSourceService"/>
     ......
 ```
 
 4. 配置client端的rpc服务
 ```java
 <bean id="serviceFactory" class="com.concur.meta.client.service.ServiceFactory">
+	<!-- 引用 rpc client bean metaDataReadServerService -->
+        <property name="metaDataReadServerService" ref="metaDataReadServerService"/>
+	<!-- 引用 rpc client bean metaDataWriteServerService -->
+        <property name="metaDataWriteServerService" ref="metaDataWriteServerService"/>
+	<!-- 引用 rpc client bean metaDataSourceService -->
+        <property name="dataSourceService" ref="metaDataSourceService"/>
+</bean>
+```    
+    
+附录server端完整配置:
+```
+    <context:annotation-config/>
+    <aop:aspectj-autoproxy />
+	
+    <context:component-scan base-package="com.concur.meta"/>
+
+    <import resource="classpath:lmodel.datasource.xml" />
+
+    <bean class="com.concur.meta.metadata.util.ApplicationContextUtils"/>
+
+    <bean id="metaDataConfigService" class="com.concur.meta.metadata.service.impl.MetaDataConfigServiceImpl"/>
+
+    <bean id="metaDataFactory" class="com.concur.meta.core.dbengine.factory.impl.MetaDataFactoryImpl"/>
+    <bean id="tableMetaManager" class="com.concur.meta.core.manager.impl.TableMetaManagerImpl"/>
+    <bean id="dataSourceManager" class="com.concur.meta.core.manager.impl.DataSourceManagerImpl"/>
+
+
+    <bean id="lMetaService" class="com.concur.meta.metadata.service.impl.LMetaServiceImpl"/>
+
+    <bean id="serviceFactory" class="com.concur.meta.client.service.ServiceFactory">
         <property name="metaDataReadServerService" ref="metaDataReadServerService"/>
         <property name="metaDataWriteServerService" ref="metaDataWriteServerService"/>
         <property name="dataSourceService" ref="metaDataSourceService"/>
-</bean>
+    </bean>
+     <!-- 元数据读服务-->
+    <bean id="metaDataReadServerService" class="com.concur.meta.core.service.impl.MetaDataReadServerServiceImpl"/>
+    <dubbo:service timeout="3000" interface="com.concur.meta.client.service.server.MetaDataReadServerService" ref="metaDataReadServerService"/>
+
+    <!-- 元数据写服务-->
+    <bean id="metaDataWriteServerService" class="com.concur.meta.core.service.impl.MetaDataWriteServerServiceImpl"/>
+    <dubbo:service timeout="3000" interface="com.concur.meta.client.service.server.MetaDataWriteServerService" ref="metaDataWriteServerService"/>
+
+    <!-- 元数据数据源服务-->
+    <bean id="metaDataSourceService" class="com.concur.meta.metadata.service.impl.DataSourceServiceImpl"/>
+    <dubbo:service timeout="3000" interface="com.concur.meta.client.service.DataSourceService" ref="dataSourceService"/>
 ```
 
 
@@ -63,7 +107,7 @@
 </dependency>
 ```
 
-2. 配置数据源(同上)
+2. 配置数据源datasource bean(同上第2步)
 
 3. 引入meta-model的spring配置
 ```
