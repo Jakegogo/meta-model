@@ -204,7 +204,8 @@ if (count == 1) {
 ```
 // 开启事务
 Transaction transaction = Transaction.start();
-transaction.setDataConsistency(true);// 需要支持数据幂等性,设置后可捕获DataConsistencyException
+// 如需要支持数据幂等性,设置DataConsistency=true后如果任何一条update或delete的updateCount == 0, 提交时则会抛出DataConsistencyException
+transaction.setDataConsistency(true);
 try {
     .........
     
@@ -221,7 +222,7 @@ try {
     Transaction.commit(transaction);// 提交事务
 } catch (ConsistencyException e) {// 幂等性异常,比如updateCount==0时抛出; 如果要求幂等性则调用回滚
     // Transaction.rollback(transaction);
-} catch (TransactionFailException e1) {// 事务异常 (一般都会有脏数据)
+} catch (TransactionFailException e1) {// 事务异常
     Transaction.rollback(transaction);// 回滚insert的数据(通过deletebyId)
 } catch (RuntimeException e1) {// 运行时异常
     Transaction.rollback(transaction);// 调用回滚
