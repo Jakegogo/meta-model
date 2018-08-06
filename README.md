@@ -57,7 +57,7 @@
 </bean>
 ```    
     
-附录server端完整配置:
+附server端完整配置例子:
 ```
     <context:annotation-config/>
     <aop:aspectj-autoproxy />
@@ -107,7 +107,18 @@
 </dependency>
 ```
 
-2. 配置数据源datasource bean(同上第2步)
+2. 配置数据源, bean ID为dataSource
+```java
+<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+	<property name="driverClassName" value="${spring.datasource.driverClassName}" />
+	<property name="url" value="${spring.datasource.url}" />
+	<property name="username" value="${spring.datasource.username}" />
+	<property name="password" value="${spring.datasource.password}" />
+	<property name="validationQuery" value="${spring.datasource.validation-query}" />
+	<property name="maxTotal" value="${spring.datasource.max-active}" />
+	<property name="testOnBorrow" value="${spring.datasource.test-on-borrow}" />
+</bean>
+```
 
 3. 引入meta-model的spring配置
 ```
