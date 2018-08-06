@@ -220,20 +220,33 @@ try {
 
     // 提交到数据库执行更新和删除操作
     Transaction.commit(transaction);// 提交事务
-} catch (ConsistencyException e) {// 幂等性异常,比如updateCount==0时抛出; 如果要求幂等性则调用回滚
-    // Transaction.rollback(transaction);
-} catch (TransactionFailException e1) {// 事务异常
-    Transaction.rollback(transaction);// 回滚insert的数据(通过deletebyId)
-} catch (RuntimeException e1) {// 运行时异常
-    Transaction.rollback(transaction);// 调用回滚
+} catch (ConsistencyException e) {
+    // 幂等性异常,比如updateCount==0时抛出; 如果要求幂等性则调用回滚
+    Transaction.rollback(transaction);
+    // 其他操作
+} catch (TransactionFailException e1) {
+    // 事务异常, 回滚insert的数据(通过deletebyId)
+    Transaction.rollback(transaction);
+} catch (RuntimeException e1) {
+    // 运行时异常,调用回滚
+    Transaction.rollback(transaction);
 }
 
-// 或者单独捕获幂等性异常
+// 单独捕获幂等性异常
 try {
     ....
 } catch (ConsistencyException e) {
     // 因为ConsistencyException继承了TransactionFailException, 单独捕获时,
     // 也可以捕获的抛出的TransactionFailException异常
+    Transaction.rollback(transaction);
+}
+
+// 捕获TransactionFailException
+try {
+    ....
+} catch (TransactionFailException e) {
+    // 因为ConsistencyException等子异常都继承了TransactionFailException,
+    // 任何失败异常都可以被捕获到
     Transaction.rollback(transaction);
 }
 
