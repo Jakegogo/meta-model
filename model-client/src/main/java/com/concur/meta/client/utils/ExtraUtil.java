@@ -190,7 +190,7 @@ public class ExtraUtil {
                     for (String kv : arr) {
                         if (isNotBlank(kv)) {
                             if(kv.contains(SSP)){
-                                String[] ar = kv.split(SSP);
+                                String[] ar = kv.split(SSP,2);
                                 if (null != ar && ar.length == 2) {
                                     String key = decode(ar[0]);
                                     String val = decode(ar[1]);
