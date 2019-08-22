@@ -344,4 +344,7 @@ try {
 
 ```
 
+### 支持动态SQL返回动态结果集的demo信息
 
+git地址：https://github.com/xiaoxueisme/AutoOpenApi
+详细的readme文档：https://github.com/xiaoxueisme/AutoOpenApi/blob/master/README.md
