@@ -220,6 +220,19 @@ public class ConvertUtils {
         if (map == null) {
             return null;
         }
+
+        //针对配置结果集类型为QueryJsonResult 直接将结果转换成json类型即可
+        if (clazz.equals(QueryJsonResult.class)){
+            String data = JSONObject.toJSONString(map);
+            System.out.println(data);
+            T instance = clazz.newInstance();
+
+            Field f = clazz.getDeclaredField("jsonData");
+            f.setAccessible(true);
+            f.set(instance, data);
+            return instance;
+        }
+
         final T instance = clazz.newInstance();
         if (Map.class.isAssignableFrom(clazz)) {
             ((Map) instance).putAll(map);
