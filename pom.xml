@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.3.9.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
-        <mybatis.version>3.4.4</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
         <meta-model.version>1.0.0-SNAPSHOT</meta-model.version>
         <meta-model.client.version>1.0.0-SNAPSHOT</meta-model.client.version>
     </properties>
