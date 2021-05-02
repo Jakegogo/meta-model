@@ -1,20 +1,10 @@
 # Maven
-- task: Cache@2
-  inputs:
-    key: 'test'
-    path: '/'
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
 - master
-- task: Bash@3
-  inputs:
-    filePath: './instal.sh'
-    arguments: 'a=d'
-pool:
-  vmImage: ubuntu-latest
 
 steps:
 - task: Maven@3
@@ -27,3 +17,10 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      mvn deploy
