@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.concur.meta</groupId>
     <artifactId>meta-model</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -15,7 +14,7 @@
         <module>model-metadata</module>
     </modules>
     <properties>
-        <project.jdk.version>1.6</project.jdk.version>
+        <project.jdk.version>1.8</project.jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.3.9.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
@@ -192,70 +191,44 @@
         </dependencies>
     </dependencyManagement>
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <source>${project.jdk.version}</source>
+                        <target>${project.jdk.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.3.0</version>
+                    <configuration>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>assemble-all</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${project.jdk.version}</source>
-                    <target>${project.jdk.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <excludes>
-                    <exclude>**/.svn/*</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*.xml</include>
-                    <include>**/*.properties</include>
-                    <include>**/*.xsd</include>
-                    <include>**/*.groovy</include>
-                    <include>**/*.png</include>
-                    <include>**/*.sql</include>
-                    <include>**/*.pmc</include>
-                    <include>**/*.vm</include>
-                </includes>
-                <excludes>
-                    <exclude>**/.svn/*</exclude>
-                </excludes>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>src/test/java</directory>
-                <excludes>
-                    <exclude>**/.svn/*</exclude>
-                </excludes>
-            </testResource>
-            <testResource>
-                <directory>src/test/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*.xml</include>
-                    <include>**/*.properties</include>
-                    <include>**/*.xsd</include>
-                    <include>**/*.groovy</include>
-                    <include>**/*.png</include>
-                    <include>**/*.sql</include>
-                    <include>**/*.vm</include>
-                </includes>
-                <excludes>
-                    <exclude>**/.svn/*</exclude>
-                </excludes>
-            </testResource>
-        </testResources>
-        <filters>
-            <filter>../antx.properties</filter>
-            <!--<filter>${user.home}/antx.properties</filter> -->
-        </filters>
     </build>
 
 </project>
