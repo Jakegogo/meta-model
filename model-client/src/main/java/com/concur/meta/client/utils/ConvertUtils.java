@@ -1,5 +1,7 @@
 package com.concur.meta.client.utils;
 
+import com.alibaba.fastjson.JSONObject;
+import com.concur.meta.client.conversion.QueryJsonResult;
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
@@ -216,7 +218,7 @@ public class ConvertUtils {
      * @throws InvocationTargetException
      */
     public static <T> T toPoJo(Class<T> clazz, final Map map)
-        throws IllegalAccessException, InstantiationException, IntrospectionException, InvocationTargetException {
+            throws IllegalAccessException, InstantiationException, IntrospectionException, InvocationTargetException, NoSuchFieldException {
         if (map == null) {
             return null;
         }

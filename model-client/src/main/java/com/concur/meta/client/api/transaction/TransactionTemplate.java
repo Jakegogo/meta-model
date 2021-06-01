@@ -41,7 +41,7 @@ public class TransactionTemplate {
         // 需要支持数据幂等性,设置后可捕获DataConsistencyException
         transaction.setDataConsistency(dataConsistency);
 
-        ExecuteStatus executeStatus = new ExecuteStatus();
+        ExecuteStatus<T> executeStatus = new ExecuteStatus<T>();
         // 执行回调方法
         T result = null;
         try {
