@@ -16,7 +16,7 @@
     <properties>
         <project.jdk.version>1.8</project.jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.9.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
         <junit.version>4.12</junit.version>
         <mybatis.version>3.4.4</mybatis.version>
         <meta-model.version>1.0.0-SNAPSHOT</meta-model.version>
